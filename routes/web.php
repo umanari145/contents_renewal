@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('', 'ItemController@index')->name('Home');
+
+//sp版
+Route::group(['prefix' => 'sp', 'as' => 'Sp/'], function () {
+
 });
