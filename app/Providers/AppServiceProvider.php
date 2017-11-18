@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(
+            'pc.common.sidebar', \App\Http\ViewComposers\TagComposer::class
+        );
     }
 
     /**

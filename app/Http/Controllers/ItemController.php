@@ -10,8 +10,8 @@ class ItemController extends Controller
 
     public function index()
     {
-
         $items = Item::orderBy('id', 'desc')->paginate(20);
-        return view('', ['items' => $items]);
+
+        return view('pc.index', ['items' => $items]);
     }
 }
