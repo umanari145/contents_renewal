@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use DB;
+use Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'pc.common.sidebar', \App\Http\ViewComposers\TagComposer::class
         );
+        \DB::listen(
+            function($query) {
+                \Log::debug("SQL LOG::", [$query->sql, $query->bindings, $query->time]);
+        });
     }
 
     /**

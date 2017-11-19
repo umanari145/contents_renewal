@@ -3,8 +3,7 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\Contracts\View\View;
-use App\Models\Ext\TTatemono;
-use App\Models\Estate;
+use App\Model\Tag;
 
 /**
  * Class LinksComposer
@@ -21,7 +20,10 @@ class TagComposer {
 
     private function getTagLists()
     {
-        return ['aaa','bbb', 'ccc'];
+        $tag = new Tag;
+        $tags = $tag->calcItemCountGroupByTag();
+
+        return $tags;
     }
 
 }
