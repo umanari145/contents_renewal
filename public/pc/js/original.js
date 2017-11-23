@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 836);
+/******/ 	return __webpack_require__(__webpack_require__.s = 838);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -63992,18 +63992,27 @@ if (false) {
 }
 
 /***/ }),
-/* 836 */
+/* 836 */,
+/* 837 */,
+/* 838 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(208);
-module.exports = __webpack_require__(837);
+module.exports = __webpack_require__(839);
 
 
 /***/ }),
-/* 837 */
-/***/ (function(module, exports) {
+/* 839 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+
+var app = __webpack_require__(208);
+
+var num_str = Sugar.Number.random(1, 33);
+console.log(num_str);
+
+var hogehoge = '274-0077';
+var aaaa = Sugar.String.remove(hogehoge, '-');
+console.log(aaaa);
 
 /***/ })
 /******/ ]);
