@@ -12,7 +12,7 @@ class Tag extends Model{
     public function calcItemCountGroupByTag()
     {
         $query = DB::table('tags')
-                ->select('tags.tag',DB::raw('COUNT(item_tags.id) as num'))
+                ->select('tags.id','tags.tag',DB::raw('COUNT(item_tags.id) as num'))
                 ->join('item_tags',function ($join){
                     $join->on('tags.id','=','item_tags.tag_id');
                 })
