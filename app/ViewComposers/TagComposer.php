@@ -33,11 +33,10 @@ class TagComposer {
         } else {
             $tag = new Tag;
             $tags = $tag->calcItemCountGroupByTag();
-
             Redis::pipeline(function ($pipe) use ($tags) {
                 foreach ($tags as $tag){
                     $tag_str = serialize($tag);
-                    Redis::lpush('ranking_list', $tag_str);
+                    Redis::rpush('ranking_list', $tag_str);
                 }
             });
         }

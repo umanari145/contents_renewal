@@ -1,5 +1,6 @@
 {
     "/pc/js/app.js": "/pc/js/app.js",
-    "/pc/css/app.css": "/pc/css/app.css",
+    "/pc/css/common.css": "/pc/css/common.css",
+    "/pc/css/list.css": "/pc/css/list.css",
     "/pc/js/original.js": "/pc/js/original.js"
 }
