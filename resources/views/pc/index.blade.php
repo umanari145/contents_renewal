@@ -1,7 +1,7 @@
 @extends('pc.common.layout')
 
 @section('styleSheet')
-	<link href="{{asset('pc/css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('pc/css/app.css')}}" rel="stylesheet">
 @endsection
 
 @section('JS')
@@ -10,5 +10,7 @@
 
 
 @section('content')
-aaa
+	@foreach($items as $item)
+    	<p>{{$item->title}}</p>
+	@endforeach
 @endsection

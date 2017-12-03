@@ -13,6 +13,10 @@
 
 Route::get('', 'ItemController@index')->name('Home');
 
+
+Route::get('sitemap', 'SitemapController@index')->name('Sitemap');
+
+
 //sp版
 Route::group(['prefix' => 'sp', 'as' => 'Sp/'], function () {
 

@@ -9,11 +9,10 @@
 
 </head>
 <body>
-
+	@include('pc.common.header')
 	@yield('content')
 	@include('pc.common.sidebar')
-
-</div>
+	@include('pc.common.footer')
 </body>
 </html>
 

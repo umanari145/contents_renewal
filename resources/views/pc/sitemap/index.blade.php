@@ -1,3 +1,15 @@
+@extends('pc.common.layout')
+
+@section('styleSheet')
+    <link href="{{asset('pc/css/app.css')}}" rel="stylesheet">
+@endsection
+
+@section('JS')
+	<script type="text/javascript" src="{{asset('pc/js/original.js')}}"></script>
+@endsection
+
+
+@section('content')
 <div >
 	<div >JK-Collectionについて</div>
 	<ul class>
@@ -8,3 +20,4 @@
 		<li>JK-Collectionはみやすいやすように動画を収集しているだけであり、著作権の侵害を助長しているわけではありません。</li>
 	</ul>
 </div>
+@endsection
