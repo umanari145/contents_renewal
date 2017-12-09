@@ -20,12 +20,26 @@
     			</div>
 				<div class="item_title">{{$item->title}}</div>
 
-				<dl class="item_other_info">
-					<dt>登録日</dt><dd>{{$item->created}}</dd>
-					<dt>時間</dt><dd>{{$item->volume}}</dd>
-					<dt>タグ</dt>
-					<dd class="tag_info"></dd>
-				</dl>
+				<table class="item_other_info">
+					<tr>
+						<th>登録日</th><td>{{$item->created}}</td>
+					</tr>
+					<tr>
+						<th>時間</th><td>{{$item->volume}}</td>
+					</tr>
+					<tr>
+						<th>タグ</th>
+						<td>
+							<ul class="tag_list">
+							@if (isset($item->tags_arr))
+								@foreach($item->tags_arr as $tag)
+									<li>{{$tag->tag}}</li>
+								@endforeach
+							@endif
+							</ul>
+						</td>
+					</tr>
+				</table>
     		</div>
 		@endforeach
 		</div>

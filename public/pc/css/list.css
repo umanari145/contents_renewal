@@ -15,17 +15,31 @@
 .item_area .single_item {
   max-width: 22%;
 }
-.item_area .item_other_info {
-  overflow: hidden;
+.item_area .item_other_info th {
+  text-align: left;
+  min-width: 60px;
+  vertical-align: top;
 }
-.item_area .item_other_info dt {
-  margin-top: 5px;
-  width: 30%;
-  float: left;
-  clear: both;
+.item_area .item_other_info td .tag_list {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
-.item_area .item_other_info dd {
-  margin-top: 5px;
+.item_area .item_other_info td .tag_list li {
+  margin-right: 10px;
+  text-align: left;
+  list-style-type: none;
 }
 .pagination {
   display: -webkit-box;

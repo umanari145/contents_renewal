@@ -1,4 +1,4 @@
-<footer class="footer"><a>
+<footer class="footer">
 	<ul>
 		<li>FAQ</li>
 		<li>サイトポリシー</li>

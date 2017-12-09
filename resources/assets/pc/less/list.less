@@ -10,16 +10,28 @@
 	}
 
 	.item_other_info{
-		overflow:hidden;
-		dt{
-			margin-top:5px;
-			width:30%;
-			float:left;
-			clear:both;
+		th{
+			text-align:left;
+			min-width:60px;
+			vertical-align:top;
 		}
-		dd{
-			margin-top:5px;
+		td{
+			.tag_list{
+				padding:0;
+				margin:0;
+				display:flex;
+				flex-direction:row;
+				flex-wrap:wrap;
+				justify-content:flex-start;
+				li{
+					margin-right:10px;
+					text-align:left;
+					list-style-type:none;
+				}
+			}
 		}
+
+
 	}
 }
 

@@ -23,4 +23,5 @@ class Tag extends Model{
         $tags = $query->get();
         return $tags;
     }
+
 }

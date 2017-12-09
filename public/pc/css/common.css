@@ -63,3 +63,23 @@
   display: block;
   margin: 10px 0;
 }
+.footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.footer ul li {
+  min-width: 10%;
+  list-style-type: none;
+  text-decoration: none;
+  text-align: center;
+}

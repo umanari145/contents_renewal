@@ -18,9 +18,7 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $ar_search_data = $request->get('s', []);
-
         $items = $this->Item->getResult($ar_search_data);
-
         return view('pc.index', ['items' => $items]);
     }
 }
