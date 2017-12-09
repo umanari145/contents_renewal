@@ -16,7 +16,7 @@
 		@foreach($items as $item)
     		<div class="single_item">
     			<div class="item_img">
-    				<img src>
+    				<img src="http://jk-collection.net/img/{{$item->original_id}}.jpg">
     			</div>
 				<div class="item_title">{{$item->title}}</div>
 
@@ -28,7 +28,7 @@
 						<th>時間</th><td>{{$item->volume}}</td>
 					</tr>
 					<tr>
-						<th>タグ</th>
+						<th class="tag_th">タグ</th>
 						<td>
 							<ul class="tag_list">
 							@if (isset($item->tags_arr))
@@ -43,7 +43,6 @@
     		</div>
 		@endforeach
 		</div>
-
 		{!!$items->render() !!}
 	</div>
 

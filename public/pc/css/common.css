@@ -63,6 +63,13 @@
   display: block;
   margin: 10px 0;
 }
+.left_area .tag_area .each_tag a {
+  color: #000;
+  text-decoration: none;
+}
+.left_area .tag_area .each_tag a:hover {
+  text-decoration: underline;
+}
 .footer ul {
   display: -webkit-box;
   display: -ms-flexbox;

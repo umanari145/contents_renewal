@@ -7,31 +7,51 @@ use DB;
 
 class Item extends Model
 {
-    //
+
     /**
      * 検索結果を取得
      *
      * @param array $ar_search_data 検索クエリ
      * @return array 検索結果
      */
-    public function getResult($ar_search_data, $has_tag_info = true) {
+    public function getResult($ar_search_data, $has_tag_info = true)
+    {
 
         $query = DB::table('items')
-                ->select('id', 'title', 'volume', 'created');
+                ->select('id','original_id','title','volume','created');
+
+        $query = $this->makeWhere($query, $ar_search_data);
         $query->orderBy('items.id','desc');
-
-        //カテゴリー検索
-
-        //キーワード検索
-        if($v = array_get($ar_search_data, 'word')) {
-            $query->where('title', 'like', '%'.$v.'%');
-        }
 
         $items = $query->paginate(20);
         $this->decorateItem($items, true);
         return  $items;
     }
 
+    /**
+     * 検索句の作成
+     * @param object $query クエリオブジェクト
+     * @param array $ar_search_data 検索句
+     * @return クエリオブジェクト
+     */
+    private function makeWhere($query, $ar_search_data)
+    {
+        //キーワード検索
+        if($v = array_get($ar_search_data, 'word')) {
+            $query->where('title', 'like', '%'.$v.'%');
+        }
+
+        //タグ検索
+        if ($tag_id = array_get($ar_search_data, 'tag')) {
+            $query->whereExists(function ($query) use ($tag_id) {
+                $query->select('item_tags.id')
+                ->from('item_tags')
+                ->where('item_tags.tag_id', $tag_id)
+                ->whereRaw('item_tags.item_id = items.id');
+            });
+        }
+        return $query;
+    }
 
     /**
      * 商品のデータ加工
@@ -54,6 +74,12 @@ class Item extends Model
         }
     }
 
+    /**
+     * タグ情報を取得
+     * @param string $item_id 商品id(変数、配列ともにあり)
+     * @return array タグのクエリ
+     *
+     */
     private function getTagByItem($item_id)
     {
         $query = DB::table('tags')
