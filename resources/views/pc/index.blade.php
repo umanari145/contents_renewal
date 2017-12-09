@@ -10,21 +10,27 @@
 
 
 @section('content')
-	<div class="item_area">
-	@foreach($items as $item)
-    	<div class="single_item">
-    		<div class="item_img">
-    			<img src>
-    		</div>
-			<div class="item_title">{{$item->title}}</div>
+	<div class="item_area_block">
 
-			<dl class="item_other_info">
-				<dt>登録日</dt><dd>{{$item->created}}</dd>
-				<dt>時間</dt><dd>{{$item->volume}}</dd>
-				<dt>タグ</dt>
-				<dd class="tag_info"></dd>
-			</dl>
-    	</div>
-	@endforeach
+		<div class="item_area">
+		@foreach($items as $item)
+    		<div class="single_item">
+    			<div class="item_img">
+    				<img src>
+    			</div>
+				<div class="item_title">{{$item->title}}</div>
+
+				<dl class="item_other_info">
+					<dt>登録日</dt><dd>{{$item->created}}</dd>
+					<dt>時間</dt><dd>{{$item->volume}}</dd>
+					<dt>タグ</dt>
+					<dd class="tag_info"></dd>
+				</dl>
+    		</div>
+		@endforeach
+		</div>
+
+		{!!$items->render() !!}
 	</div>
+
 @endsection

@@ -27,3 +27,38 @@
 .item_area .item_other_info dd {
   margin-top: 5px;
 }
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.pagination li {
+  list-style-type: none;
+  border-top: solid 1px #000;
+  border-left: solid 1px #000;
+  border-bottom: solid 1px #000;
+  min-width: 4%;
+  text-align: center;
+}
+.pagination li:first-child {
+  border-radius: 3px 0 0 3px;
+}
+.pagination li:last-child {
+  border-right: solid 1px #000;
+  border-radius: 0 3px 3px 0;
+}
+.pagination li a {
+  text-decoration: none;
+}
+.pagination li a:hover {
+  text-decoration: underline;
+}

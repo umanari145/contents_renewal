@@ -30,8 +30,21 @@ class Item extends Model
             $query->where('title', 'like', '%'.$v.'%');
         }
 
-        $item = $query->paginate(20);
-        return  $item;
+        $items = $query->paginate(20);
+        $this->decorateItem($items);
+
+        return  $items;
+    }
+
+    /**
+     * 商品のデータ加工
+     * @param object $items 商品データ
+     */
+    private function decorateItem(&$items) {
+        foreach ($items as &$item) {
+            $time1 = new \DateTime($item->created);
+            $item->created = $time1->format('Y/m/d');
+        }
     }
 
 }
