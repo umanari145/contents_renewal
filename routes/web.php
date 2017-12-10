@@ -13,6 +13,8 @@
 
 Route::get('', 'ItemController@index')->name('Home');
 
+Route::get('hogehoge', 'ItemController@hogehoge')->name('hogehoge');
+
 
 Route::get('sitemap', 'SitemapController@index')->name('Sitemap');
 

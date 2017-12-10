@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Cache;
 
 class Item extends Model
 {
@@ -43,6 +44,7 @@ class Item extends Model
 
         //タグ検索
         if ($tag_id = array_get($ar_search_data, 'tag')) {
+
             $query->whereExists(function ($query) use ($tag_id) {
                 $query->select('item_tags.id')
                 ->from('item_tags')
@@ -59,6 +61,7 @@ class Item extends Model
      */
     private function decorateItem(&$items, $has_tag = false)
     {
+        $tags_hash = [];
         if ($has_tag) {
             $item_ids = $items->pluck('id')->toArray();
             $tags = $this->getTagByItem($item_ids);
@@ -68,7 +71,7 @@ class Item extends Model
         foreach ($items as &$item) {
             $time1 = new \DateTime($item->created);
             $item->created = $time1->format('Y/m/d');
-            if (isset($tags_hash[$item->id])) {
+            if ($has_tag == true &&isset($tags_hash[$item->id])) {
                 $item->tags_arr = $tags_hash[$item->id];
             }
         }
@@ -95,6 +98,22 @@ class Item extends Model
         }
         $tags = $query->get();
         return $tags;
+    }
+
+    public function hogehogeb()
+    {
+        //このメソッドで保存
+        $value = Cache::remember('aaaaa', 120, function() {
+            return DB::table('items')->limit(10)->get();
+        });
+
+        //このメソッドで取得
+        $value2 = Cache::get('aaaaa', function() {
+            return DB::table('items')->limit(10)->get();
+        });
+
+        //ログを見てsqlを発行しているかどうかを確認
+        dd($value2);
     }
 
 }

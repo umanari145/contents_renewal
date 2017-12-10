@@ -22,6 +22,12 @@ class ItemController extends Controller
         return view('pc.index', ['items' => $items]);
     }
 
+    public function hogehoge(Request $request)
+    {
+        $this->Item->hogehogeb();
+
+    }
+
     /**
      * 検索クエリの作成
      * @param Request $request リクエスト
