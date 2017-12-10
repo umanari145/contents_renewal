@@ -31,6 +31,12 @@
       -ms-flex-align: center;
           align-items: center;
 }
+.header_area .header_logo a {
+  text-decoration: none;
+}
+.header_area .header_logo a:hover {
+  text-decoration: underline;
+}
 .header_area .right_area ul {
   display: -webkit-box;
   display: -ms-flexbox;

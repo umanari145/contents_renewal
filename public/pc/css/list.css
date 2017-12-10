@@ -24,6 +24,9 @@
   width: 100%;
   max-height: 150px;
 }
+.item_area .single_item .item_img .list_img:hover {
+  opacity: 0.6;
+}
 .item_area .single_item .item_title {
   height: 80px;
 }

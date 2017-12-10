@@ -1,7 +1,7 @@
 <header class="header_area">
 	<div class="header_logo">
 		<h1>
-			<a href="">
+			<a href="{{ env('APP_URL')}}">
 				JK-Collection
 			</a>
 		</h1>

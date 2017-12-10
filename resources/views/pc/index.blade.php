@@ -16,7 +16,9 @@
 		@foreach($items as $item)
     		<div class="single_item">
     			<div class="item_img">
-    				<img src="http://jk-collection.net/img/{{$item->original_id}}.jpg">
+    				<a href="{{env('APP_URL')}}">
+    					<img src="http://jk-collection.net/img/{{$item->original_id}}.jpg" class="list_img">
+    				</a>
     			</div>
 				<div class="item_title">{{$item->title}}</div>
 
