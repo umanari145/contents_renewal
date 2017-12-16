@@ -37,7 +37,7 @@
 							<ul class="tag_list">
 							@if (isset($item->tags_arr))
 								@foreach($item->tags_arr as $tag)
-									<li><a href="{{env('APP_URL')}}?s[tag]={{$tag->id}}">{{$tag->tag}}</a></li>
+									<li><a href="{{env('APP_URL')}}?s[tag]={{$tag->id}}" class="tag_button">{{$tag->tag}}</a></li>
 								@endforeach
 							@endif
 							</ul>

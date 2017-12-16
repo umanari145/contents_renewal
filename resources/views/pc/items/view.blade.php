@@ -18,7 +18,7 @@
 			</div>
 		</div>
 
-		<table class="item_other_info">
+		<table class="item_other_info" style="margin-top:20px;">
 			<tr>
 				<th>登録日</th><td>{!! date('Y/m/d', strtotime($item->created)) !!}</td>
 			</tr>
@@ -38,6 +38,10 @@
 				</td>
 			</tr>
 		</table>
+
+		<div class="add_favorite">
+			お気にいり
+		</div>
 
 	</div>
 
