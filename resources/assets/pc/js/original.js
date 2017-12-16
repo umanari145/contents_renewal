@@ -1,9 +1,18 @@
 
 var app = require('../js/app.js');
 
-var num_str = Sugar.Number.random(1,33);
-console.log(num_str);
+$(function(){
 
-var hogehoge = '274-0077';
-var aaaa = Sugar.String.remove(hogehoge,'-');
-console.log(aaaa);
+	resize_frame();
+
+	$(window).resize(function() {
+		resize_frame();
+	});
+
+	function resize_frame()
+	{
+		var item_width = $('iframe').outerWidth();
+		var item_height = item_width * 0.75;
+		$('iframe').height(item_height);
+	}
+})

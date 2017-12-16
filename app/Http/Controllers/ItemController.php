@@ -19,14 +19,15 @@ class ItemController extends Controller
     {
         $ar_search_data = $this->getSearchData($request);
         $items = $this->Item->getResult($ar_search_data);
-        return view('pc.index', ['items' => $items]);
+        return view('pc.items.index', ['items' => $items]);
     }
 
-    public function hogehoge(Request $request)
-    {
-        $this->Item->hogehogeb();
-
+    public function view($id) {
+        $item = Item::find($id);
+        $item->tags_arr = $this->Item->getTagByItem($id);
+        return view('pc.items.view', ['item' => $item]);
     }
+
 
     /**
      * 検索クエリの作成

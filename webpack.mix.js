@@ -15,4 +15,4 @@ mix
    .js('resources/assets/pc/js/app.js', 'public/pc/js')
    .js('resources/assets/pc/js/original.js', 'public/pc/js')
    .less('resources/assets/pc/less/common.less', 'public/pc/css/')
-   .less('resources/assets/pc/less/list.less', 'public/pc/css/');
+   .less('resources/assets/pc/less/item.less', 'public/pc/css/');

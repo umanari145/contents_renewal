@@ -1,28 +1,37 @@
 .header_area{
 
+	background-color:#000;
+	color:#fff;
 	flex-wrap: nowrap;
 	display:flex;
 	justify-content:space-between;
 	align-items:center;
+	min-height:50px;
 
 	.header_logo{
+		margin-left:5%;
 		a{
+			font-size:37px;
+			color:#fff;
 			text-decoration:none;
 		}
 		a:hover{
+			color:#fff;
 			text-decoration:underline;
 		}
 	}
 
-	.right_area ul{
-		display:flex;
-		justify-content:center;
-		li {
-			margin-left:10px;
-			list-style-type:none;
+	.right_area{
+		min-width:250px;
+		margin-right:4%;
+		ul{
+			display:flex;
+			justify-content:center;
+			li {
+				margin-right:20px;
+				list-style-type:none;
+			}
 		}
-
-
 	}
 
 }

@@ -13,6 +13,9 @@
 
 Route::get('', 'ItemController@index')->name('Home');
 
+Route::get('items/view/{id}', 'ItemController@view');
+
+
 Route::get('hogehoge', 'ItemController@hogehoge')->name('hogehoge');
 
 

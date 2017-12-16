@@ -69,8 +69,6 @@ class Item extends Model
         }
 
         foreach ($items as &$item) {
-            $time1 = new \DateTime($item->created);
-            $item->created = $time1->format('Y/m/d');
             if ($has_tag == true &&isset($tags_hash[$item->id])) {
                 $item->tags_arr = $tags_hash[$item->id];
             }
@@ -83,7 +81,7 @@ class Item extends Model
      * @return array タグのクエリ
      *
      */
-    private function getTagByItem($item_id)
+    public function getTagByItem($item_id)
     {
         $query = DB::table('tags')
               ->select('item_tags.item_id','tags.id','tags.tag')
