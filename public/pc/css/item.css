@@ -47,8 +47,7 @@
   text-decoration: none;
 }
 .item_title a:hover {
-  -webkit-text-decoration: underlline;
-          text-decoration: underlline;
+  text-decoration: underline;
 }
 .item_other_info tr {
   height: 25px;

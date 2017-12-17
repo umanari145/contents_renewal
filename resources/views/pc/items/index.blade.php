@@ -23,7 +23,7 @@
 				<div class="item_title">
 					<a href="{{env('APP_URL')}}/items/view/{{$item->id}}">{{$item->title}}</a>
 				</div>
-
+<p><i class="fa fa-bomb fa-lg"></i></p>
 				<table class="item_other_info">
 					<tr>
 						<th>登録日</th><td>{!! date('Y/m/d', strtotime($item->created)) !!}</td>

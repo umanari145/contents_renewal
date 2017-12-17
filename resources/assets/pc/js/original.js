@@ -1,6 +1,7 @@
 
 var app = require('../js/app.js');
 
+
 $(function(){
 
 	resize_frame();
