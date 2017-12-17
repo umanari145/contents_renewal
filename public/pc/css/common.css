@@ -145,6 +145,7 @@ table {
   /* 擬似要素にも同様のプロパティを指定 */
 }
 .header_area {
+  width: 100%;
   background-color: #000;
   color: #fff;
   -ms-flex-wrap: nowrap;
@@ -185,8 +186,12 @@ table {
           justify-content: center;
 }
 .header_area .right_area ul li {
+  line-height: 30px;
   margin-right: 20px;
   list-style-type: none;
+}
+.header_area .search_area {
+  height: 30px;
 }
 .wrapper {
   margin-top: 15px;

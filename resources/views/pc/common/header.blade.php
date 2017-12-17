@@ -9,7 +9,7 @@
 
 	<nav class="right_area">
 		<ul>
-			<li>タグ</li>
+			<li><input type="text" name="search" placeholder="検索" class="search_area"><i class="fa fa-search" aria-hidden="true"></i></li>
 			<li>お気に入り</li>
 			<li>閲覧履歴</li>
 		</ul>
