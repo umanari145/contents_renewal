@@ -15,6 +15,10 @@
     <input type="hidden" name="item_id" id="item_id" value="{{$item->id}}">
     <input type="hidden" name="is_fav" id="is_fav" value="{{$is_fav}}">
 
+    <div class="movie_title">
+      {{$item->title}}
+    </div>
+
     <div class="detail_area">
 			<div class="detail_item">
 			{!! $item->movie_url !!}

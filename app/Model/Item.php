@@ -39,6 +39,12 @@ class Item extends Model
      */
     private function makeWhere($query, $ar_search_data)
     {
+        //お気に入り検索
+        if($v = array_get($ar_search_data, 'is_fav')) {
+            $favorite_item_ids = $this->getFavoriteItemId($v);
+            $query->whereIn('id', $favorite_item_ids);
+        }
+
         //キーワード検索
         if($v = array_get($ar_search_data, 'search_word')) {
             $query->where('title', 'like', '%'.$v.'%');
@@ -46,7 +52,6 @@ class Item extends Model
 
         //タグ検索
         if ($tag_id = array_get($ar_search_data, 'tag')) {
-
             $query->whereExists(function ($query) use ($tag_id) {
                 $query->select('item_tags.id')
                 ->from('item_tags')
@@ -55,6 +60,21 @@ class Item extends Model
             });
         }
         return $query;
+    }
+
+    /**
+     * お気に入り商品のid取得
+     * @param string $session_id セッションID
+     * @return お気に入り商品id
+     */
+    private function getFavoriteItemId($session_id)
+    {
+      $favorite_item_ids = DB::table('favorites')
+            ->where('session_id', $session_id)
+            ->get()
+            ->pluck('item_id')
+            ->toArray();
+      return $favorite_item_ids;
     }
 
     /**

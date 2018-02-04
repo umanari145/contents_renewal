@@ -3,7 +3,7 @@
 	<ul class="tag_area">
 	@foreach ($tags as $tag)
 		<li class="each_tag">
-			<a href="{{env('APP_URL')}}/?s[tag]={{$tag->id}}">{{$tag->tag}}({{$tag->num}})</a>
+			<a href="{{route('Home','s[tag]='. $tag->id )}}">{{$tag->tag}}({{$tag->num}})</a>
 		</li>
 	@endforeach
 	</ul>

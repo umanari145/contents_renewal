@@ -19,6 +19,11 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $ar_search_data = $this->getSearchData($request);
+
+        if (!empty($ar_search_data['is_fav'])) {
+          $ar_search_data['is_fav'] = $request->cookie('laravel_session');
+        }
+
         $items = $this->Item->getResult($ar_search_data);
         return view('pc.items.index', ['items' => $items]);
     }
