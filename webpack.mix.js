@@ -14,6 +14,6 @@ let mix = require('laravel-mix');
 mix
    .js('resources/assets/pc/js/app.js', 'public/pc/js')
    .js('resources/assets/pc/js/original.js', 'public/pc/js')
-   .less('node_modules/font-awesome/less/font-awesome.less','public/pc/css')
+//   .less('node_modules/font-awesome/less/font-awesome.less','public/pc/css')
    .less('resources/assets/pc/less/common.less', 'public/pc/css/')
    .less('resources/assets/pc/less/item.less', 'public/pc/css/');

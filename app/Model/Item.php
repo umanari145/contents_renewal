@@ -8,6 +8,8 @@ use Cache;
 
 class Item extends Model
 {
+    const CREATED_AT = 'created';
+    const UPDATED_AT = 'modified';
 
     /**
      * 検索結果を取得
@@ -38,7 +40,7 @@ class Item extends Model
     private function makeWhere($query, $ar_search_data)
     {
         //キーワード検索
-        if($v = array_get($ar_search_data, 'word')) {
+        if($v = array_get($ar_search_data, 'search_word')) {
             $query->where('title', 'like', '%'.$v.'%');
         }
 
@@ -54,6 +56,17 @@ class Item extends Model
         }
         return $query;
     }
+
+    /**
+     * 視聴回数のカウントアップ
+     * @param object $item 商品
+     */
+    public function registViewCount($item)
+    {
+      $item->view_count++;
+      $item->save();
+    }
+
 
     /**
      * 商品のデータ加工

@@ -6,13 +6,16 @@
 
 @section('JS')
 	<script type="text/javascript" src="{{asset('pc/js/original.js')}}"></script>
+  <script type="text/javascript" src="{{asset('pc/js/favorite.js')}}"></script>
 @endsection
 
 
 @section('content')
 	<div class="detail_area_block">
+    <input type="hidden" name="item_id" id="item_id" value="{{$item->id}}">
+    <input type="hidden" name="is_fav" id="is_fav" value="{{$is_fav}}">
 
-		<div class="detail_area">
+    <div class="detail_area">
 			<div class="detail_item">
 			{!! $item->movie_url !!}
 			</div>
@@ -39,9 +42,17 @@
 			</tr>
 		</table>
 
-		<div class="add_favorite">
-			お気にいり
-		</div>
+    <div class="view_count">
+      {{number_format($item->view_count)}}views
+    </div>
+
+    <div class="favorite_btn add" id="delete_favorite">
+      お気にいり削除
+    </div>
+
+    <div class="favorite_btn add" id="add_favorite">
+      お気にいり追加
+    </div>
 
 	</div>
 

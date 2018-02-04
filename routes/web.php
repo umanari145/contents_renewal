@@ -15,6 +15,9 @@ Route::get('', 'ItemController@index')->name('Home');
 
 Route::get('items/view/{id}', 'ItemController@view');
 
+Route::post('regist_favorite', 'ItemController@regist_favorite');
+
+Route::post('delete_favorite', 'ItemController@delete_favorite');
 
 Route::get('hogehoge', 'ItemController@hogehoge')->name('hogehoge');
 
