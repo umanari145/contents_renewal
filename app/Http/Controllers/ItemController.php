@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Item;
 use App\Model\Favorite;
+use App\Model\History;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
@@ -20,21 +21,36 @@ class ItemController extends Controller
     {
         $ar_search_data = $this->getSearchData($request);
 
+        $has_paginate = true;
         if (!empty($ar_search_data['is_fav'])) {
           $ar_search_data['is_fav'] = $request->cookie('laravel_session');
         }
 
+        if (!empty($ar_search_data['is_history'])) {
+          $has_paginate = false;
+          $ar_search_data['is_history'] = $request->cookie('laravel_session');
+        }
+
         $items = $this->Item->getResult($ar_search_data);
-        return view('pc.items.index', ['items' => $items]);
+        return view('pc.items.index',
+              [
+                'items' => $items,
+                'has_paginate' => $has_paginate
+                ]
+        );
     }
 
     public function view(Request $request, $id) {
         $item = Item::find($id);
         $item->registViewCount($item);
-        $Favorite = new Favorite();
 
+        $favorite = new Favorite();
         $session_id = $request->cookie('laravel_session');
-        $is_fav = $Favorite->is_fav($session_id, $id);
+
+        $history = new History();
+        $history->regist_history($session_id, $id);
+
+        $is_fav = $favorite->is_fav($session_id, $id);
         $item->tags_arr = $this->Item->getTagByItem($id);
         return view('pc.items.view',
           [

@@ -15,7 +15,7 @@
 				<i class="fa fa-search" aria-hidden="true"></i>
 			</li>
 			<li><a href="{{route('Home','s[is_fav]=true')}}">お気に入り</li>
-			<li>閲覧履歴</li>
+			<li><a href="{{route('Home','s[is_history]=true')}}">閲覧履歴</li>
 		</ul>
 		</form>
 	</nav>

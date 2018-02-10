@@ -20,13 +20,16 @@ class Item extends Model
     public function getResult($ar_search_data, $has_tag_info = true)
     {
 
-        $query = DB::table('items')
+        if ($v=array_get($ar_search_data, 'is_history')) {
+          $items = $this->getHistoryItem($ar_search_data['is_history']);
+        } else {
+          $query = DB::table('items')
                 ->select('id','original_id','title','volume','created');
+          $query = $this->makeWhere($query, $ar_search_data);
+          $query->orderBy('items.id','desc');
+          $items = $query->paginate(20);
+        }
 
-        $query = $this->makeWhere($query, $ar_search_data);
-        $query->orderBy('items.id','desc');
-
-        $items = $query->paginate(20);
         $this->decorateItem($items, true);
         return  $items;
     }
@@ -61,6 +64,34 @@ class Item extends Model
         }
         return $query;
     }
+
+    /**
+     * 履歴商品の獲得
+     * @param string $session_id セッションID
+     * @return お気に入り商品
+     */
+    private function getHistoryItem($session_id)
+    {
+      $history_items = DB::table('histories')
+            ->select('item_id')
+            ->where('session_id', $session_id)
+            ->orderBy('id','desc')
+            ->get()
+            ->pluck('item_id');
+      $history_items2 = [];
+      $items_ids = [];
+
+      foreach($history_items as $history_item_id) {
+        if (in_array($history_item_id,$items_ids) === false) {
+         $items_ids[] = $history_item_id;
+         $history_items2[] = $this->select('id','original_id','title','volume','created')
+                                  ->where('id', $history_item_id)
+                                  ->first();
+        }
+      }
+      return collect($history_items2);
+    }
+
 
     /**
      * お気に入り商品のid取得

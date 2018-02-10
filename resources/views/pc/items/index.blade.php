@@ -11,7 +11,6 @@
 
 @section('content')
 	<div class="item_area_block">
-
 		<div class="item_area">
 		@foreach($items as $item)
     		<div class="single_item">
@@ -47,7 +46,9 @@
     		</div>
 		@endforeach
 		</div>
+    @if ($has_paginate)
 		{!!$items->render() !!}
+    @endif
 	</div>
 
 @endsection
