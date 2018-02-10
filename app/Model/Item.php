@@ -19,19 +19,19 @@ class Item extends Model
      */
     public function getResult($ar_search_data, $has_tag_info = true)
     {
-
+        $search_word = '';
         if ($v=array_get($ar_search_data, 'is_history')) {
           $items = $this->getHistoryItem($ar_search_data['is_history']);
         } else {
           $query = DB::table('items')
                 ->select('id','original_id','title','volume','created');
-          $query = $this->makeWhere($query, $ar_search_data);
+          list($query, $search_word)  = $this->makeWhere($query, $ar_search_data);
           $query->orderBy('items.id','desc');
           $items = $query->paginate(20);
         }
 
         $this->decorateItem($items, true);
-        return  $items;
+        return  [$items, $search_word];
     }
 
     /**
@@ -43,6 +43,7 @@ class Item extends Model
     private function makeWhere($query, $ar_search_data)
     {
         //お気に入り検索
+        $search_word = '';
         if($v = array_get($ar_search_data, 'is_fav')) {
             $favorite_item_ids = $this->getFavoriteItemId($v);
             $query->whereIn('id', $favorite_item_ids);
@@ -50,11 +51,14 @@ class Item extends Model
 
         //キーワード検索
         if($v = array_get($ar_search_data, 'search_word')) {
+            $search_word = $v;
             $query->where('title', 'like', '%'.$v.'%');
         }
 
         //タグ検索
         if ($tag_id = array_get($ar_search_data, 'tag')) {
+            $tag = DB::table('tags')->find($tag_id);
+            $search_word = $tag->tag;
             $query->whereExists(function ($query) use ($tag_id) {
                 $query->select('item_tags.id')
                 ->from('item_tags')
@@ -62,7 +66,7 @@ class Item extends Model
                 ->whereRaw('item_tags.item_id = items.id');
             });
         }
-        return $query;
+        return [$query, $search_word];
     }
 
     /**

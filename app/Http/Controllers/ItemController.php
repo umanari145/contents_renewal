@@ -22,18 +22,27 @@ class ItemController extends Controller
         $ar_search_data = $this->getSearchData($request);
 
         $has_paginate = true;
+        $is_fav = false;
+        $is_history = false;
+
         if (!empty($ar_search_data['is_fav'])) {
+          $is_fav = true;
           $ar_search_data['is_fav'] = $request->cookie('laravel_session');
         }
 
         if (!empty($ar_search_data['is_history'])) {
           $has_paginate = false;
+          $is_history = true;
           $ar_search_data['is_history'] = $request->cookie('laravel_session');
         }
 
-        $items = $this->Item->getResult($ar_search_data);
+        list($items, $search_word) = $this->Item->getResult($ar_search_data);
+
         return view('pc.items.index',
               [
+                'is_fav'=> $is_fav,
+                'is_history' => $is_history,
+                'search_word' => $search_word,
                 'items' => $items,
                 'has_paginate' => $has_paginate
                 ]

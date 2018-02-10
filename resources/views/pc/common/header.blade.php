@@ -2,7 +2,7 @@
 	<div class="header_logo">
 		<h1>
 			<a href="{{ route('Home')}}">
-				JK-Collection
+				{{env('SITE_TITLE')}}
 			</a>
 		</h1>
 	</div>

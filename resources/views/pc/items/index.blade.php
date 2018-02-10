@@ -11,6 +11,15 @@
 
 @section('content')
 	<div class="item_area_block">
+    <div class="search_word_area">
+      @if($search_word)
+        {{$search_word}}で{{$items->total()}}件の動画が見つかりました
+      @elseif($is_fav)
+        お気に入り{{$items->total()}}件の動画が見つかりました
+      @elseif($is_history)
+        閲覧履歴 {{count($items)}}件の動画が見つかりました
+      @endif
+    </div>
 		<div class="item_area">
 		@foreach($items as $item)
     		<div class="single_item">
