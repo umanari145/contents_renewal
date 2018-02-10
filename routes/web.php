@@ -21,8 +21,17 @@ Route::post('delete_favorite', 'ItemController@delete_favorite');
 
 Route::get('hogehoge', 'ItemController@hogehoge')->name('hogehoge');
 
-
 Route::get('sitemap', 'SitemapController@index')->name('Sitemap');
+
+//管理画面
+Route::group(['prefix' => 'auth','middleware' => 'auth'], function () {
+  Route::get('home', 'Auth\LoginController@index')->name('AdminHome');
+});
+
+Route::group(['prefix' => 'auth'], function () {
+  Route::match(['get','post'],'login', 'Auth\LoginController@login')->name('login');
+  Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+});
 
 
 //sp版

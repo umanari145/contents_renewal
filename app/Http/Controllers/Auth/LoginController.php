@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Model\Admin;
 
 class LoginController extends Controller
 {
@@ -21,19 +24,41 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+
+    }
+
+    public function login(Request $request)
+    {
+      $message = '';
+      if ($request->isMethod('post')) {
+        $authinfo =[
+          'username' => $request->username,
+          'password' => $request->password
+        ];
+
+        //'username'=> 'umanari145',
+        //'password' => bcrypt('aaaa')
+
+        if (Auth::attempt($authinfo)){
+          return redirect()->route('AdminHome');
+        } else {
+          $message = 'ログインに失敗しました。';
+        }
+      }
+      return view('pc.admins.login',[
+        'message' => $message
+      ]);
+    }
+
+    public function index()
+    {
+      echo 'loginsshitaato';
+      exit;
     }
 }
