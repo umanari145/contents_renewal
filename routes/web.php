@@ -26,6 +26,7 @@ Route::get('sitemap', 'SitemapController@index')->name('Sitemap');
 //管理画面
 Route::group(['prefix' => 'auth','middleware' => 'auth'], function () {
   Route::get('home', 'Auth\LoginController@index')->name('AdminHome');
+  Route::get('items/regist/{id}', 'Auth\itemController@regist')->name('itemRegist');
 });
 
 Route::group(['prefix' => 'auth'], function () {

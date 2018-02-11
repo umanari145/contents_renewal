@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>{{env('SITE_TITLE')}}</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link href="{{asset('pc/css/app.css')}}" rel="stylesheet">
+	<link href="{{asset('pc/css/login.css')}}" rel="stylesheet">
 	<link href="{{asset('pc/css/font-awesome.css')}}" rel="stylesheet">
 
 	@yield('styleSheet')
@@ -12,9 +12,6 @@
 
 </head>
 <body>
-		<div class="container">
-		<h1>{{env('SITE_TITLE')}}:管理画面</h1>
 		@yield('content')
-		</div>
 </body>
 </html>

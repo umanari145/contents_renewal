@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Model\Admin;
+use App\Model\Item;
 
 class LoginController extends Controller
 {
@@ -58,7 +59,11 @@ class LoginController extends Controller
 
     public function index()
     {
-      echo 'loginsshitaato';
-      exit;
+      $item = new Item();
+      list($items, $search_word) = $item->getResult([]);
+      return view('pc.admins.index',[
+        'items' => $items
+      ]);
+
     }
 }

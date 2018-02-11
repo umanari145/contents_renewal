@@ -17,4 +17,6 @@ mix
 //   .less('node_modules/font-awesome/less/font-awesome.less','public/pc/css')
    .less('resources/assets/pc/less/common.less', 'public/pc/css/')
    .less('resources/assets/pc/less/item.less', 'public/pc/css/')
+   .sass('resources/assets/sass/app.scss', 'public/pc/css/')
+   .sass('resources/assets/pc/sass/login.scss', 'public/pc/css/')
    .sass('resources/assets/pc/sass/admin.scss', 'public/pc/css/');

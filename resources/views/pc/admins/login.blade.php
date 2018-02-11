@@ -1,4 +1,4 @@
-@extends('pc.admins.layout')
+@extends('pc.admins.login_layout')
 
 
 @section('content')
