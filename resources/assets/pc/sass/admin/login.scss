@@ -1,4 +1,4 @@
-@import "extends";
+@import "../common/extends";
 
 body{
   background: #ccc;
@@ -32,7 +32,7 @@ body{
         padding: 2px;
       }
       .login_btn{
-        @include basic_button;
+        @extend .basic_button;
         background: #5d8fc2;
         width: 100%;
       }

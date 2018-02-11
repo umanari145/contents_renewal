@@ -14,9 +14,9 @@ let mix = require('laravel-mix');
 mix
    .js('resources/assets/pc/js/app.js', 'public/pc/js')
    .js('resources/assets/pc/js/original.js', 'public/pc/js')
-//   .less('node_modules/font-awesome/less/font-awesome.less','public/pc/css')
-   .less('resources/assets/pc/less/common.less', 'public/pc/css/')
-   .less('resources/assets/pc/less/item.less', 'public/pc/css/')
-   .sass('resources/assets/sass/app.scss', 'public/pc/css/')
-   .sass('resources/assets/pc/sass/login.scss', 'public/pc/css/')
-   .sass('resources/assets/pc/sass/admin.scss', 'public/pc/css/');
+//   .sass('node_modules/font-awesome/less/font-awesome.less','public/pc/css')
+   .sass('resources/assets/pc/sass/common/common.scss', 'public/pc/css/')
+   .sass('resources/assets/pc/sass/item.scss', 'public/pc/css/')
+   .sass('resources/assets/pc/sass/admin/app.scss', 'public/pc/css/admin/')
+   .sass('resources/assets/pc/sass/admin/login.scss', 'public/pc/css/admin')
+   .sass('resources/assets/pc/sass/admin/admin.scss', 'public/pc/css/admin');

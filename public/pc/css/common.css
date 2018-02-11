@@ -1,4 +1,7 @@
+@charset "UTF-8";
+
 /*** reset css */
+
 html,
 body,
 div,
@@ -87,8 +90,10 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 /*  HTML5 display-role reset for older browsers
 */
+
 article,
 aside,
 details,
@@ -102,17 +107,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -120,30 +129,36 @@ q:after {
   content: '';
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   /* 擬似要素にも同様のプロパティを指定 */
 }
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   /* 擬似要素にも同様のプロパティを指定 */
 }
+
 .basic_button {
   position: relative;
   display: inline-block;
@@ -155,6 +170,7 @@ table {
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
+
 .header_area {
   width: 100%;
   background-color: #000;
@@ -176,27 +192,32 @@ table {
           align-items: center;
   min-height: 50px;
 }
+
 .header_area .header_logo {
   margin-left: 5%;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 50%;
           flex: 1 1 50%;
 }
+
 .header_area .header_logo a {
   font-size: 37px;
   color: #fff;
   text-decoration: none;
 }
+
 .header_area .header_logo a:hover {
   color: #fff;
   text-decoration: underline;
 }
+
 .header_area .right_area {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 50%;
           flex: 1 1 50%;
   margin-right: 4%;
 }
+
 .header_area .right_area ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -205,24 +226,29 @@ table {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
 .header_area .right_area ul li {
   line-height: 30px;
   margin-right: 20px;
   list-style-type: none;
 }
+
 .header_area .right_area ul li a:link,
 .header_area .right_area ul li a:visited,
 .header_area .right_area ul li a:active {
   color: #fff;
   text-decoration: none;
 }
+
 .header_area .right_area ul li a:hover {
   color: #fff;
   text-decoration: underline;
 }
+
 .header_area .search_area {
   height: 30px;
 }
+
 .wrapper {
   margin-top: 65px;
   display: -webkit-box;
@@ -233,6 +259,7 @@ table {
       -ms-flex-direction: row;
           flex-direction: row;
 }
+
 .left_area {
   min-width: 20%;
   margin-left: 3%;
@@ -240,22 +267,27 @@ table {
       -ms-flex-positive: 0;
           flex-grow: 0;
 }
+
 .left_area .tag_area .each_tag {
   list-style-type: none;
   display: block;
   margin: 10px 0;
   height: 20px;
 }
+
 .left_area .tag_area .each_tag a {
   color: #000;
   text-decoration: none;
 }
+
 .left_area .tag_area .each_tag a:hover {
   text-decoration: underline;
 }
+
 .footer {
   margin-top: 25px;
 }
+
 .footer ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -270,9 +302,11 @@ table {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
 .footer ul li {
   min-width: 10%;
   list-style-type: none;
   text-decoration: none;
   text-align: center;
 }
+

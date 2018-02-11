@@ -1,6 +1,6 @@
-@import "mixins";
-@import "extends";
-@import "variables";
+@import "common/mixins";
+@import "common/extends";
+@import "common/variables";
 
 
 .search_word_area{
@@ -90,7 +90,7 @@
 }
 
 .tag_button {
-	&:extend(.basic_button);
+	@extend .basic_button;
 	background: #03A9F4;
 	border: solid 1px #0f9ada;
 	a{
@@ -104,7 +104,7 @@
 
 .favorite_btn{
 	margin-top: 15px;
-	&:extend(.basic_button);
+	@extend .basic_button;
 	padding:15px;
 	border: solid 1px #FF0000;
 	color:#fff;
