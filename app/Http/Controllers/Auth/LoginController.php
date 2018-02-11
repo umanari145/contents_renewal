@@ -64,6 +64,11 @@ class LoginController extends Controller
       return view('pc.admins.index',[
         'items' => $items
       ]);
+    }
 
+    public function logout()
+    {
+      Auth::logout();
+      return redirect()->route('login');
     }
 }

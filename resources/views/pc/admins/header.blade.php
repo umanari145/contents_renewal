@@ -1,22 +1,13 @@
 <header class="header_area">
-	<div class="header_logo">
-		<h1>
+	<div class="row">
+		<h1 class="col-lg-4">
 			<a href="{{ route('Home')}}">
-				{{env('SITE_TITLE')}}
+				{{env('SITE_TITLE')}}:管理画面
 			</a>
 		</h1>
-	</div>
+		<div class="col-lg-4" style="margin-top:25px;">
+			<p><a href="{{route('logout')}}" class="btn btn-info">ログアウト</a></p>
+		</div>
 	<input type="hidden" name="basic_url" id="basic_url" value="{{env('APP_URL')}}">
-	<nav class="right_area">
-		<form action="{{route('Home')}}" method="GET">
-		<ul>
-			<li>
-				<input type="text" name="s[search_word]" placeholder="検索" class="search_area">
-				<i class="fa fa-search" aria-hidden="true"></i>
-			</li>
-			<li><a href="{{route('Home','s[is_fav]=true')}}">お気に入り</li>
-			<li><a href="{{route('Home','s[is_history]=true')}}">閲覧履歴</li>
-		</ul>
-		</form>
-	</nav>
+</div>
 </header>

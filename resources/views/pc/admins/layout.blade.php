@@ -12,8 +12,8 @@
 
 </head>
 <body>
+		@include('pc.admins.header')
 		<div class="container">
-		<h1>{{env('SITE_TITLE')}}:管理画面</h1>
 		@yield('content')
 		</div>
 </body>
