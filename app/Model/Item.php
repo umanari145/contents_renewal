@@ -24,12 +24,11 @@ class Item extends Model
           $items = $this->getHistoryItem($ar_search_data['is_history']);
         } else {
           $query = DB::table('items')
-                ->select('id','original_id','title','volume','created');
+                ->select('id','original_id','movie_url','title','volume','created');
           list($query, $search_word)  = $this->makeWhere($query, $ar_search_data);
           $query->orderBy('items.id','desc');
-          $items = $query->paginate(20);
+          $items = $query->paginate(5);
         }
-
         $this->decorateItem($items, true);
         return  [$items, $search_word];
     }
@@ -88,7 +87,7 @@ class Item extends Model
       foreach($history_items as $history_item_id) {
         if (in_array($history_item_id,$items_ids) === false) {
          $items_ids[] = $history_item_id;
-         $history_items2[] = $this->select('id','original_id','title','volume','created')
+         $history_items2[] = $this->select('id','original_id','movie_url','title','volume','created')
                                   ->where('id', $history_item_id)
                                   ->first();
         }
@@ -138,6 +137,9 @@ class Item extends Model
 
         foreach ($items as &$item) {
             if ($has_tag == true &&isset($tags_hash[$item->id])) {
+                $movie_id = [];
+                preg_match('/v=(.*?)$/' , $item->movie_url, $movie_id);
+                $item->movie_url = sprintf("http://i.ytimg.com/vi/%s/default.jpg", $movie_id[1]);
                 $item->tags_arr = $tags_hash[$item->id];
             }
         }

@@ -61,6 +61,7 @@ class ItemController extends Controller
 
         $is_fav = $favorite->is_fav($session_id, $id);
         $item->tags_arr = $this->Item->getTagByItem($id);
+        $item->movie_url = str_replace('watch?v=','embed/', $item->movie_url);
         return view('pc.items.view',
           [
             'item' => $item,
@@ -105,9 +106,16 @@ class ItemController extends Controller
         }
 
         //ページャー使用時はセッションから検索句を使う
-        if ($page_no = $request->get('page', [])) {
+        $page_no = $request->get('page', []);
+        if (!empty($page_no)) {
             $ar_search_data = $request->session()->get('search_data', []);
         }
+
+        //ページャー&検索句共にからの場合はセッションを削除
+        if (empty($ar_search_data) && empty($page_no)) {
+          $request->session()->forget('search_data');
+        }
+
         return $ar_search_data;
     }
 

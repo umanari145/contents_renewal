@@ -25,7 +25,7 @@
     		<div class="single_item">
     			<div class="item_img">
     				<a href="{{env('APP_URL')}}/items/view/{{$item->id}}">
-    					<img src="http://jk-collection.net/img/{{$item->original_id}}.jpg" class="list_img">
+    					<img src="{{$item->movie_url}}" class="list_img">
     				</a>
     			</div>
 				<div class="item_title">

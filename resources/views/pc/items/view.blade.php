@@ -21,7 +21,8 @@
 
     <div class="detail_area">
 			<div class="detail_item">
-			{!! $item->movie_url !!}
+        <iframe width="560" height="315" src="{{$item->movie_url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
 			</div>
 		</div>
 
