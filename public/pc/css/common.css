@@ -261,11 +261,8 @@ table {
 }
 
 .left_area {
-  min-width: 20%;
+  width: 20%;
   margin-left: 3%;
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
 }
 
 .left_area .tag_area .each_tag {
