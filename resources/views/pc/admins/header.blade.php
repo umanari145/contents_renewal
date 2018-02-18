@@ -1,7 +1,7 @@
 <header class="header_area">
 	<div class="row">
 		<h1 class="col-lg-4">
-			<a href="{{ route('Home')}}">
+			<a href="{{ route('AdminHome')}}">
 				{{env('SITE_TITLE')}}:管理画面
 			</a>
 		</h1>

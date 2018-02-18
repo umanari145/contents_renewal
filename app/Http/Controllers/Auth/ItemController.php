@@ -83,12 +83,13 @@ class ItemController extends Controller
     {
       $rules = [
         'title' => 'required',
-        'movie_url' => 'required'
+        'movie_url' => 'required|url'
       ];
 
       $messages = [
         'title.required' => 'タイトルが入力されていません。',
-        'movie_url.required' => '動画URLが入力されていません。'
+        'movie_url.required' => '動画URLが入力されていません。',
+        'movie_url.url' => '正しいURLを入力してください。'
       ];
 
       return [$rules, $messages];
