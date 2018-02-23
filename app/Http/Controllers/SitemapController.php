@@ -11,4 +11,5 @@ class SitemapController extends Controller
     {
         return view('pc.sitemap.index');
     }
+    
 }

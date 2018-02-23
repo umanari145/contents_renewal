@@ -43,7 +43,8 @@ class Item extends Model
     {
         //お気に入り検索
         $search_word = '';
-        if($v = array_get($ar_search_data, 'is_fav')) {
+        if (isset($ar_search_data['is_fav'])) {
+            $v = $ar_search_data['is_fav'];
             $favorite_item_ids = $this->getFavoriteItemId($v);
             $query->whereIn('id', $favorite_item_ids);
         }
@@ -98,13 +99,13 @@ class Item extends Model
 
     /**
      * お気に入り商品のid取得
-     * @param string $session_id セッションID
+     * @param string $favorite_number
      * @return お気に入り商品id
      */
-    private function getFavoriteItemId($session_id)
+    private function getFavoriteItemId($favorite_number)
     {
       $favorite_item_ids = DB::table('favorites')
-            ->where('session_id', $session_id)
+            ->where('favorite_number', $favorite_number)
             ->get()
             ->pluck('item_id')
             ->toArray();

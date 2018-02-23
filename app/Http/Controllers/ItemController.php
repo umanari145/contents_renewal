@@ -8,6 +8,8 @@ use App\Model\History;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
+use Cookie;
+
 
 class ItemController extends Controller
 {
@@ -27,7 +29,7 @@ class ItemController extends Controller
 
         if (!empty($ar_search_data['is_fav'])) {
           $is_fav = true;
-          $ar_search_data['is_fav'] = $request->cookie('laravel_session');
+          $ar_search_data['is_fav'] = $request->cookie('favorite_number','');
         }
 
         if (!empty($ar_search_data['is_history'])) {
@@ -53,13 +55,13 @@ class ItemController extends Controller
         $item = Item::find($id);
         $item->registViewCount($item);
 
-        $favorite = new Favorite();
         $session_id = $request->cookie('laravel_session');
-
         $history = new History();
         $history->regist_history($session_id, $id);
 
-        $is_fav = $favorite->is_fav($session_id, $id);
+        $favorite = new Favorite();
+        $favorite_number = @$request->cookie('favorite_number')?: $favorite->generateNo();
+        $is_fav = $favorite->is_fav($favorite_number, $id);
         $item->tags_arr = $this->Item->getTagByItem($id);
         $item->movie_url = str_replace('watch?v=','embed/', $item->movie_url);
         return view('pc.items.view',
@@ -76,9 +78,10 @@ class ItemController extends Controller
      */
     public function regist_favorite(Request $request){
       $Favorite = new Favorite();
-      $sesion_id = $request->cookie('laravel_session');
+      $favorite_number = @$request->cookie('favorite_number')?:$Favorite->generateNo();
       $item_id = $request->input('item_id');
-      $Favorite->regist_favorite($sesion_id, $item_id);
+      $Favorite->regist_favorite($favorite_number, $item_id);
+      Cookie::queue('favorite_number', $favorite_number, 60 * 24 * 365);
     }
 
     /**
@@ -86,10 +89,10 @@ class ItemController extends Controller
      * @param $item_id 商品id
      */
     public function delete_favorite(Request $request){
-      $sesion_id = $request->cookie('laravel_session');
-      $item_id = $request->input('item_id');
       $Favorite = new Favorite();
-      $Favorite->delete_favorite($sesion_id, $item_id);
+      $favorite_number = @$request->cookie('favorite_number');
+      $item_id = $request->input('item_id');
+      $Favorite->delete_favorite($favorite_number, $item_id);
     }
 
     /**
