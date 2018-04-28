@@ -15,12 +15,19 @@ Route::get('', 'ItemController@index')->name('Home');
 
 Route::get('items/view/{id}', 'ItemController@view');
 
+//CRUDテスト用の画面
+Route::group(['prefix' => 'member'], function () {
+  Route::get('', 'MemberController@index')->name('member@index');
+  Route::match(['get','post'],'create', 'MemberController@create')->name('member@create');
+});
+
+
+
 Route::post('regist_favorite', 'ItemController@regist_favorite');
 
 Route::post('delete_favorite', 'ItemController@delete_favorite');
 
 Route::get('hogehoge', 'ItemController@hogehoge')->name('hogehoge');
-
 Route::get('sitemap', 'SitemapController@index')->name('Sitemap');
 
 //管理画面

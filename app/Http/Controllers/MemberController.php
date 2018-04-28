@@ -26,10 +26,14 @@ class MemberController extends Controller
     public function create(Request $request)
     {
         $master = new Master();
-        $totalLists = $master->getLists([
+        $masterLists = $master->getLists([
           'traffic','sex', 'area'
         ]);
-        var_dump($totalLists);
+        $data = null;
+        return view('pc.member.create',[
+            'query'       => $data,
+            'masterLists' => $masterLists
+        ]);
     }
 
 
