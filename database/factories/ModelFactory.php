@@ -12,13 +12,13 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Model\Item::class, function (Faker\Generator $faker) {
     static $password;
 
+    $faker = Faker\Factory::create('ja_JP');
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'title' => $faker->name,
+        'movie_url' => $faker->url,
     ];
 });

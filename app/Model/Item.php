@@ -185,4 +185,8 @@ class Item extends Model
         dd($value2);
     }
 
+    public function hogehoge2($test)
+    {
+      echo 'hogehoge2';
+    }
 }
