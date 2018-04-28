@@ -1,0 +1,38 @@
+db:
+  traffic:
+    label_col: traffic_code
+    value_col: traffic_name
+    where:
+      -
+        col: status
+        operant: =
+        value: 10
+
+    order_by:
+      -
+        col: traffic_code
+        order: asc
+text:
+  sex:
+    -
+      value: "01"
+      label: 男
+    -
+      value: "02"
+      label: 女
+  area:
+    -
+      value: 1
+      label: 北海道・東北
+    -
+      value: 2
+      label: 関東
+    -
+      value: 3
+      label: 北陸・東海・中部
+    -
+      value: 4
+      label: 近畿・中国・四国
+    -
+      value: 5
+      label: 九州・沖縄
