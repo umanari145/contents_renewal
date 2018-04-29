@@ -8,12 +8,36 @@ class FormCheck{
 
     public $formParams;
 
-    public function __construct($formName)
+    /**
+     *フォームのインスタンス生成
+     *
+     * @param string $formName   フォームの名称
+     * @param array  $modelParam 編集時のディフォ値の設置
+     */
+    public function __construct($formName, $modelParam = null)
     {
         $formFilePath = sprintf("Forms/%s.yaml", $formName);
         $yamlContents = Yaml::parse(file_get_contents(app_path($formFilePath)));
         if (!empty($yamlContents['params'])) {
             $this->formParams = $yamlContents['params'];
+        }
+
+        if($modelParam != null) {
+            $this->setModelParam($modelParam);
+        }
+    }
+
+    /**
+     * モデルの値のセット
+     *
+     * @param array $modelParam モデルのセット
+     */
+    private function setModelParam($modelParam)
+    {
+        foreach($this->formParams as &$field) {
+            $name = $field['name'];
+            $value = @$modelParam[$name]?:'';
+            $field['default'] = $value;
         }
     }
 
@@ -122,4 +146,5 @@ class FormCheck{
         $concatErrorRule = implode('|', $errorRules);
         return $concatErrorRule;
     }
+
 }

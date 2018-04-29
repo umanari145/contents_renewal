@@ -19,6 +19,8 @@ Route::get('items/view/{id}', 'ItemController@view');
 Route::group(['prefix' => 'member'], function () {
   Route::get('', 'MemberController@index')->name('member@index');
   Route::match(['get','post'],'create', 'MemberController@create')->name('member@create');
+  Route::match(['get','post'],'edit/{mem_id}', 'MemberController@edit')->name('member@edit');
+
 });
 
 
