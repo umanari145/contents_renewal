@@ -1,11 +1,19 @@
 @extends('pc.admins.layout')
 
 @section('content')
-  {!! Form::open(['method' => 'post']) !!}
+  {!! Form::open(['route'=> 'member@create', 'method' => 'post']) !!}
   {!! Form::token() !!}
 
   <div class="form-group">
-    @include('pc.common.form',['field'=>'name', 'label' => '名前'])
+    @include('pc.common.form',['field'=>'name'])
+  </div>
+
+  <div class="form-group">
+    @include('pc.common.form',['field'=>'furigana'])
+  </div>
+
+  <div class="form-group">
+    @include('pc.common.form',['field'=>'email'])
   </div>
 
   <div class="form-group">
@@ -13,13 +21,17 @@
   </div>
 
   <div class="form-group">
-    @include('pc.common.form',['type'=>'select', 'field'=>'area', 'label' => '地域'])
+    @include('pc.common.form',['field'=>'birthday'])
+  </div>
+
+
+  <div class="form-group">
+    @include('pc.common.form',['type'=>'select', 'field'=>'area'])
   </div>
 
   <div class="form-group">
-    @include('pc.common.form',['type'=>'checkbox', 'field'=>'area'])
+    @include('pc.common.form',['type'=>'checkbox', 'field'=>'traffic'])
   </div>
-
 
   {!! Form::submit('登録する', ['class'=>'btn btn-primary']) !!}
   {!! Form::close()!!}

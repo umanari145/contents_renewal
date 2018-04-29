@@ -1,4 +1,7 @@
-@if(!isset($value))
+<?php $value = '';?>
+@if(isset($data[$field]['value']))
+  <?php $value = $data[$field]['value'];?>
+@elseif(!isset($value))
   <?php $value = '';?>
 @endif
 
@@ -6,7 +9,9 @@
   <?php $class = [];?>
 @endif
 
-@if(empty($label))
+@if(isset($data[$field]['label']))
+  <?php $label = $data[$field]['label'];?>
+@elseif(empty($label))
   <?php $label = '';?>
 @endif
 
@@ -27,21 +32,23 @@
 @endif
 
 @if($type == 'radio')
+  {!! Form::label($field, $label, ['class'=>'control-label']) !!}
   <?php $loopIndex =0; ?>
-  @foreach($masterLists[$field] as $radioval => $label)
+  @foreach($masterLists[$field] as $radioval => $radiolabel)
      <?php
         $loopIndex++;
         $checked = ($value == $radioval);
         $labelIndex = sprintf("%s_%s", $field, $loopIndex)
      ?>
     {!! Form::radio($field, $radioval, $checked,['id' => $labelIndex]) !!}
-    {!! Form::label($labelIndex, $label, ['class'=>'control-label']) !!}
+    {!! Form::label($labelIndex, $radiolabel, ['class'=>'control-label']) !!}
   @endforeach
 @endif
 
 @if($type == 'checkbox')
+  {!! Form::label($field, $label, ['class'=>'control-label']) !!}
   <?php $loopIndex =0; ?>
-  @foreach($masterLists[$field] as $checkval => $label)
+  @foreach($masterLists[$field] as $checkval => $checklabel)
   <div class="checkbox-inline">
     <?php
       $loopIndex++;
@@ -50,7 +57,7 @@
       $checkfield = sprintf("%s[]", $field);
     ?>
     {!! Form::checkbox($checkfield, $checkval, $checked ,['id'=> $labelIndex]) !!}
-    {!! Form::label($labelIndex, $label, ['class'=>'control-label']) !!}
+    {!! Form::label($labelIndex, $checklabel, ['class'=>'control-label']) !!}
   </div>
   @endforeach
 @endif

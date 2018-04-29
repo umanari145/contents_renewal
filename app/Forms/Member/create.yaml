@@ -1,0 +1,58 @@
+params:
+  -
+    name: name
+    label: 名前
+    default:
+    validation:
+      -
+        error_type: required
+        message: 名前が入力されていません
+  -
+    name: furigana
+    label: フリガナ
+    default:
+  -
+    name: email
+    label: メールアドレス
+    default:
+    validation:
+      -
+        error_type: required
+        message: メールアドレスが入力されていません
+      -
+        error_type: email
+        message: 正しいメールを入力して下さい
+  -
+    name: birthday
+    label: 誕生日
+    type: date
+    default: "1980-01-01"
+    validation:
+      -
+        error_type: required
+        message: 誕生日が入力されていません
+      -
+        error_type: date
+        message: 正しい誕生日を入力して下さい
+  -
+    name: email
+    label: メールアドレス
+    default:
+    validation:
+      -
+        error_type: required
+        message: メールアドレスが入力されていません
+      -
+        error_type: email
+        message: 正しいメールを入力して下さい
+  -
+    name: sex
+    label: 性別
+    default: '01'
+  -
+    name: area
+    label: 地域
+    default: 2
+  -
+    name: traffic
+    label: 交通手段
