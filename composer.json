@@ -22,6 +22,7 @@
         "classmap": [
             "database",
             "app/Model",
+            "app/Forms",
             "app/ViewComposers"
         ],
         "psr-4": {
