@@ -17,11 +17,9 @@ window.Sugar = require('sugar');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+//Vue.component('example', require('./components/Example.vue'));
+Vue.component('hello', require('./components/Hello.vue'));
 
 const app = new Vue({
     el: '#app'
 });
-
-
-
