@@ -10,9 +10,8 @@ use Illuminate\Http\Request;
 use App\Forms\FormCheck;
 use Cookie;
 use Yaml;
+use Cache;
 use Validator;
-
-
 
 
 class MemberController extends Controller
@@ -24,6 +23,11 @@ class MemberController extends Controller
 
     public function index(Request $request)
     {
+      $members = Member::where('mem_id','>=', 3)->get();
+      if ($cachedDB =Cache::store('file')->get('members')) {
+        dd($cachedDB);
+      }
+      Cache::store('file')->put('members', $members, 1);
     }
 
     public function create(Request $request)
