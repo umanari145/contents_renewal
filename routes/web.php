@@ -23,13 +23,14 @@ Route::group(['prefix' => 'member'], function () {
 
 });
 
+Route::get('address', 'AddressController@getPref')->name('Address@getPref');
 
+//Route::get('address/pref', 'AddressController@pref')->name('Address@pref');
 
 Route::post('regist_favorite', 'ItemController@regist_favorite');
 
 Route::post('delete_favorite', 'ItemController@delete_favorite');
 
-Route::get('hogehoge', 'ItemController@hogehoge')->name('hogehoge');
 Route::get('sitemap', 'SitemapController@index')->name('Sitemap');
 
 //管理画面
