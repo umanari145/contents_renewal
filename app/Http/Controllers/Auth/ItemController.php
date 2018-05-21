@@ -46,13 +46,18 @@ class ItemController extends Controller
 
         if (!$validator->fails()) {
 
-          DB::transaction(function () use ($data, $item_id){
-            $tag_arr = $data->tag_arr;
+          DB::beginTransaction();
+          try {
+              $tag_arr = $data->tag_arr;
             unset($data->tag_arr);
             $data->save();
             $itemTag = new ItemTag();
             $itemTag->createItemTags($item_id, $tag_arr);
-          });
+            DB::commit();
+          } catch (\Exception $e) {
+            DB::rollback();
+          }
+
           $request->session()->flash('message', '商品の登録に成功しました。');
           return redirect()->route('AdminHome');
         }
