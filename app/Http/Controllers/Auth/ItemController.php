@@ -80,6 +80,27 @@ class ItemController extends Controller
       ]);
     }
 
+    public function create(Request $request)
+    {
+      $data = null;
+      $errors = null;
+
+      $data = null;
+      if ($request->isMethod('post')) {
+        $data['name'] = '山田太郎';
+        $data['name2'] = '鈴木次郎';
+      } else {
+        $data['name'] = '山田太郎';
+        $data['name2'] = '鈴木次郎';
+        $data['sex'] = '1';
+        $data['option'] = [1];
+      }
+      var_dump($data);
+      return view('pc.admins.items.create',[
+        'data' => $data
+      ]);
+    }
+
     /**
     *   エラーのルールとメッセージ
     *   @return $rules,$message
