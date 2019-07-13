@@ -33,10 +33,12 @@ Route::post('delete_favorite', 'ItemController@delete_favorite');
 Route::get('sitemap', 'SitemapController@index')->name('Sitemap');
 
 //Queのトリガー
-Route::get('/queue', function () {
-    Queue::push(new \App\Jobs\SampleJob());
-    return 'At ' . date('Y-m-d H:i:s') . ' - queue pushed.';
-});
+Route::get('queue', 'TestController@dispatch_queue');
+//下記のようにして登録してもいいが・・・
+//Route::get('/queue', function () {
+//    Queue::push(new \App\Jobs\SampleJob());
+//    return 'At ' . date('Y-m-d H:i:s') . ' - queue pushed.';
+//});
 
 //管理画面
 Route::group(['prefix' => 'auth','middleware' => 'auth'], function () {
